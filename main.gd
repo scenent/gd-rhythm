@@ -152,7 +152,7 @@ func _ready() -> void:
 	get_node(audio).play()
 	if (AUTOPLAY):
 		$isautoplay.visible = true
-		("AUTO PLAYING...")
+		print("AUTO PLAYING...")
 	set_physics_process(true)
 
 func _physics_process(_delta) -> void:
