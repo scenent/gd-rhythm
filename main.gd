@@ -158,7 +158,7 @@ func _ready() -> void:
 func _physics_process(_delta) -> void:
 	# 현재 음원 재생 시간 얻기
 	currentSongPos = get_node(audio).get_playback_position()
-	# currentSongPos -= AudioServer.get_output_latency()
+	currentSongPos -= AudioServer.get_output_latency()
 	# 게임 종료 확인
 	if (currentSongPos >= endPos):
 		done = true
