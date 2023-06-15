@@ -13,7 +13,7 @@ const AUTOPLAY : bool = false
 # 오디오 플레이어 노드 경로
 @export_node_path("AudioStreamPlayer") var audio
 # 노트 씬 미리 로드
-@onready var noteScene : PackedScene = preload("res://note.tscn")
+@onready var noteScene : Note = preload("res://note.tscn").instantiate()
 # 노트가 (y=0) 부터 (y=PERFECT_YPOS) 까지 내려오는 시간
 var speed : float = 1.0
 # 4개의 채널에 해당하는 노트 정보
@@ -149,10 +149,12 @@ func _ready() -> void:
 		OS.alert("Please add enough space after the music, or decrease the ENDPOS_BIAS")
 	subLineArray = getSubLineArr(endPos, speed, SUBLINE_LENGTH)
 	maximumScore = getMaximumScore(noteArray)
-	get_node(audio).play()
 	if (AUTOPLAY):
 		$isautoplay.visible = true
 		print("AUTO PLAYING...")
+	await get_tree().create_timer(1.0).timeout
+	print("Game Start")
+	get_node(audio).play()
 	set_physics_process(true)
 
 func _physics_process(_delta) -> void:
@@ -178,7 +180,7 @@ func _physics_process(_delta) -> void:
 	# 노트 생성
 	for i in range(0, 4):
 		if (noteArray[i] and noteArray[i][0][0] <= currentSongPos):
-			var note : Note = noteScene.instantiate()
+			var note : Note = noteScene.duplicate()
 			var info : Array = noteArray[i].pop_front()
 			if (len(info) == 1):
 				# 일반 노트 생성
