@@ -191,6 +191,7 @@ func _physics_process(_delta) -> void:
 			var container = get_node("container" + str(i+1))
 			container.add_child(note)
 			container.get_child(container.get_child_count()-1).global_position.x = 100 * (i+1)
+			container.get_child(container.get_child_count()-1).global_position.y += coordPerFrame * (currentSongPos - info[0]) / 60
 			queue[i].append(container.get_child(container.get_child_count()-1))
 	# 보조선 생성
 	if (subLineArray and subLineArray[0] <= currentSongPos):
