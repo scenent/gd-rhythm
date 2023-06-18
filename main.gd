@@ -121,6 +121,7 @@ func resetCombo() -> void:
 	await $anim.animation_finished
 
 func _ready() -> void:
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	set_physics_process(false)
 	var noteStart : float = INF
 	for i in range(0, 4):
@@ -169,6 +170,7 @@ func _physics_process(_delta) -> void:
 		print("Game Finished")
 		print("Score : ", snapped(currentScore / maximumScore * 100.0, 0.1), "%")
 		print("Maximum Combo : ", comboMax)
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		set_physics_process(false)
 		return
 	# 롱노트 완료 확인
