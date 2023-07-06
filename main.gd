@@ -284,6 +284,7 @@ func updateInputState() -> void:
 			# 롱노트 누르던 도중 실패
 			resetCombo()
 			queue[i][0].longnoteFailed()
+			queue[i].pop_front()
 			shouldPressEnd[i] = -1.0
 			shouldPress[i] = false
 func dequeue() -> void:
