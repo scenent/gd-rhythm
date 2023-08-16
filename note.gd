@@ -58,7 +58,7 @@ func longnoteFailed():
 	longnoteComboQueue.clear()
 	$LN_Effect.color = Color("d38b8e")
 
-func _physics_process(_delta):
+func _process(_delta):
 	self.global_position.y += coordPerFrame
 	# 롱노트이고 콤보 큐가 비어있지 않다면 콤보를 더한다.
 	if (isLongnote and longnoteComboQueue != []):
