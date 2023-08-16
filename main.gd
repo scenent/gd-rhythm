@@ -122,7 +122,7 @@ func resetCombo() -> void:
 
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-	set_physics_process(false)
+	set_process(false)
 	var noteStart : float = INF
 	for i in range(0, 4):
 		if len(noteArray[i]) > 0:
@@ -156,7 +156,7 @@ func _ready() -> void:
 	await get_tree().create_timer(1.0).timeout
 	print("Game Start")
 	get_node(audio).play()
-	set_physics_process(true)
+	set_process(true)
 
 func _process(_delta) -> void:
 	# 현재 음원 재생 시간 얻기
@@ -171,7 +171,7 @@ func _process(_delta) -> void:
 		print("Score : ", snapped(currentScore / maximumScore * 100.0, 0.1), "%")
 		print("Maximum Combo : ", comboMax)
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-		set_physics_process(false)
+		set_process(false)
 		return
 	# 롱노트 완료 확인
 	for i in range(0, 4):
