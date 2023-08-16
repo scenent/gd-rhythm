@@ -158,7 +158,7 @@ func _ready() -> void:
 	get_node(audio).play()
 	set_physics_process(true)
 
-func _physics_process(_delta) -> void:
+func _process(_delta) -> void:
 	# 현재 음원 재생 시간 얻기
 	currentSongPos = get_node(audio).get_playback_position()
 	currentSongPos -= AudioServer.get_output_latency()
