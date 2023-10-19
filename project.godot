@@ -13,6 +13,7 @@ config_version=5
 config/name="Rhythm Game Project"
 run/main_scene="res://main.tscn"
 config/features=PackedStringArray("4.0", "Forward Plus")
+run/max_fps=60
 config/icon="res://icon.svg"
 
 [display]
