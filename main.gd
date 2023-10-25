@@ -123,6 +123,8 @@ func resetCombo() -> void:
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	set_process(false)
+	for i in range(1, 5):
+		get_node("pressed" + str(i)).visible = false
 	var noteStart : float = INF
 	for i in range(0, 4):
 		if len(noteArray[i]) > 0:
