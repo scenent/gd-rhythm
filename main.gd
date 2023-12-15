@@ -2,6 +2,8 @@ extends Node2D
 
 # 스크린 상에서 눌러야 하는 완벽한 y좌표
 const PERFECT_YPOS : float = 500
+# 기어 UI의 Y축 끝부분
+const GEAR_END : float = 520
 # 마지막 노트가 끝난 후 이 여백동안 대기했다가 게임이 끝남
 const ENDPOS_BIAS : float = +2.0
 # 보조선 간격(초)
@@ -291,7 +293,7 @@ func updateInputState() -> void:
 			shouldPress[i] = false
 func dequeue() -> void:
 	for i in range(0, 4):
-		if (len(queue[i]) != 0 and queue[i][0] != null and queue[i][0].global_position.y >= 520):
+		if (len(queue[i]) != 0 and queue[i][0] != null and queue[i][0].global_position.y >= GEAR_END):
 			# 롱노트일 경우
 			if (queue[i][0].isLongnote == true):
 				# 애초에 누르지 않았다면
